@@ -1,0 +1,18 @@
+
+006 Official-Windows-Setup-Instructions
+https://docs.flutter.dev/get-started/install/windows
+
+007 Official-macOS-Setup-Instructions
+https://docs.flutter.dev/get-started/install/macos
+
+008 VS-Code-Intro-Video
+https://www.youtube.com/watch?v=VqCgcpAypFQ
+
+010 Widgets-Catalog
+https://docs.flutter.dev/development/ui/widgets
+
+010 runApp-Source-Code
+https://github.com/flutter/flutter/blob/f699eb0be0a0cfcf34e2b6c0e402a18d76a96f2e/packages/flutter/lib/src/widgets/binding.dart#L1078
+
+010 main.dart
+https://github.com/academind/flutter-complete-guide-course-resources/blob/main/Code%20Snapshots/01%20Getting%20Started/01%20First%20App/lib/main.dart
