@@ -1,54 +1,63 @@
-# 🛠️ Project Creation & Setting Up a Code Editor for Flutter Development
+# 🏃 Running a First Flutter App
 
-## 📝 1. Tổng Quan Về Tạo Dự Án và Cài Đặt Trình Soạn Thảo Mã
+## 📝 1. Tổng Quan Về Chạy Ứng Dụng Flutter Đầu Tiên
 
-Tạo dự án Flutter và thiết lập trình soạn thảo mã là bước đầu tiên để phát triển ứng dụng. Quá trình bao gồm di chuyển đến thư mục mong muốn, sử dụng lệnh `flutter create` để khởi tạo dự án, và cấu hình một trình soạn thảo mã như Visual Studio Code (VSCode) với các extension phù hợp. Tên dự án có thể sử dụng ký tự `_` (underscore) thay vì space hoặc `-` để đảm bảo tuân thủ quy tắc đặt tên của Dart/Flutter.
+Chạy ứng dụng Flutter đầu tiên bao gồm mở simulator, sử dụng lệnh `flutter run` để khởi động ứng dụng, và kiểm tra hoạt động trên simulator. Với thiết bị ảo Pixel 9 chạy Android 16, bạn có thể sử dụng Android Emulator để xem trước và kiểm tra ứng dụng. Quá trình này giúp xác nhận mã nguồn hoạt động đúng trên môi trường mô phỏng.
 
 | **Bước**           | **Mô Tả**                                  |
 |---------------------|--------------------------------------------|
-| Di chuyển thư mục   | Chọn thư mục làm nơi chứa dự án            |
-| Tạo dự án           | Sử dụng `flutter create` với tên hợp lệ    |
-| Cài đặt trình soạn thảo | Cấu hình VSCode với extension Flutter    |
+| Mở simulator        | Khởi động emulator Pixel 9 (Android 16)    |
+| Chạy ứng dụng       | Sử dụng `flutter run`                      |
+| Kiểm tra            | Xác nhận ứng dụng chạy trên simulator      |
 
 ---
 
-## ⚙️ 2. Cú Pháp và Cách Sử Dụng
+## ⚙️ 2. Cú Pháp và Cách Sụng Dụng
 
-### 2.1. Tạo Dự Án Flutter
+### 2.1. Mở Simulator (Pixel 9 với Android 16)
 
-Di chuyển đến thư mục mong muốn và sử dụng lệnh `flutter create`.
-
-Ví dụ:
-
-```sh
-cd ~/Documents/FlutterProjects
-flutter create my_flutter_app
-```
-
--> Mô tả: Di chuyển đến thư mục `FlutterProjects` và tạo dự án với tên `my_flutter_app`. Tên dự án nên dùng `_` (ví dụ: `my_flutter_app`) thay vì space hoặc `-` để tránh lỗi cú pháp Dart.
-
-### 2.2. Cài Đặt Trình Soạn Thảo Mã (VSCode)
-
-Cài đặt VSCode và thêm extension Flutter để hỗ trợ phát triển.
+Khởi động Android Emulator với cấu hình Pixel 9.
 
 Ví dụ:
-
 ```sh
-# Cài đặt VSCode (nếu chưa có)
-# Tải từ https://code.visualstudio.com/
-
-# Cài đặt extension Flutter
-# Mở VSCode, vào Extensions (Ctrl+Shift+X), tìm và cài "Flutter"
+# Mở emulator Pixel 9
+flutter emulators --launch pixel_9
 ```
 
--> Mô tả: Sau khi cài VSCode, thêm extension Flutter để có gợi ý mã, debug, và xem trước giao diện trực tiếp.
+-> Mô tả: Đảm bảo emulator Pixel 9 với Android 16 đã được tạo trước (qua Android Studio). Nếu chưa, tạo bằng: `flutter emulators --create --name pixel_9`.
+
+### 2.2. Chạy Ứng Dụng với `flutter run`
+
+Chạy ứng dụng Flutter trong thư mục dự án.
+
+Ví dụ:
+```sh
+cd ~/Documents/FlutterProjects/my_flutter_app
+flutter run
+```
+
+-> Mô tả: Lệnh này biên dịch và chạy ứng dụng trên emulator Pixel 9. Nhấn `r` để reload, `q` để thoát trong terminal.
+
+### 2.3. Kiểm Tra Simulator
+
+Xác nhận ứng dụng hiển thị đúng trên Pixel 9.
+
+Ví dụ:
+```sh
+# Kiểm tra log trong terminal
+flutter logs
+```
+
+-> Mô tả: Quan sát terminal để kiểm tra lỗi hoặc thông báo, đảm bảo giao diện hiển thị "Hello Flutter" (hoặc nội dung mặc định).
 
 ---
 
 ## 📌 3. Tóm Tắt
 
-✅ **Tạo Dự Án**: Di chuyển thư mục, dùng `flutter create` với tên dùng `_` (không dùng space hoặc `-`).
+✅ **Mở Simulator**: Khởi động emulator Pixel 9 (Android 16) bằng `flutter emulators --launch`.
 
-✅ **Trình Soạn Thảo**: Nên dùng VSCode và cài extension Flutter để hỗ trợ phát triển.
+✅ **Chạy Ứng Dụng**: Sử dụng `flutter run` trong thư mục dự án.
+
+✅ **Kiểm Tra**: Xác nhận giao diện và log trên simulator.
 
 ---
