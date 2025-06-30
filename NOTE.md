@@ -1,21 +1,22 @@
-# 🛠️ What Is Flutter?
+# 🛠️ One Codebase, Multiple Platforms
 
-## 📝 1. Tổng Quan Về Flutter
+## 📝 1. Tổng Quan Về One Codebase, Multiple Platforms
 
-Flutter là một công nghệ phát triển ứng dụng đa nền tảng do Google phát triển, kết hợp giữa một **UI Framework** và một **bộ sưu tập công cụ** để xây dựng các ứng dụng chất lượng cao. UI Framework cung cấp các gói mã và hàm tiện ích để viết mã ứng dụng đa nền tảng, trong khi bộ sưu tập công cụ bao gồm CLI và phần mềm hỗ trợ phát triển, thử nghiệm và xây dựng ứng dụng. Flutter cho phép phát triển ứng dụng trên nhiều nền tảng (iOS, Android, web, và desktop) từ một mã nguồn duy nhất sử dụng một ngôn ngữ lập trình.
+Flutter cho phép phát triển ứng dụng trên nhiều nền tảng (Mobile Apps, Web, Desktop Apps) từ một mã nguồn duy nhất bằng ngôn ngữ Dart. Ban đầu, Flutter chỉ hỗ trợ ứng dụng di động (iOS và Android), nhưng nay đã mở rộng sang web (trên trình duyệt hiện đại) và desktop (Windows, macOS, Linux). Mặc dù mã nguồn có thể được viết trên cùng một máy, việc thử nghiệm và chạy ứng dụng yêu cầu máy tính tương thích với nền tảng cụ thể (macOS cho iOS/macOS, Windows cho Windows, Linux cho Linux), ngoại trừ Android và web có thể được xây dựng trên tất cả các hệ điều hành.
 
-| **Thành Phần**  | **Mô Tả**                                      |
-|-----------------|------------------------------------------------|
-| UI Framework    | Cung cấp gói mã và hàm tiện ích cho ứng dụng   |
-| Bộ Công Cụ      | Hỗ trợ CLI, phát triển, thử nghiệm và xây dựng |
+| **Danh Mục**    | **Nền Tảng**           |
+|------------------|-------------------------|
+| Mobile Apps      | iOS, Android            |
+| Web              | Modern browsers         |
+| Desktop Apps     | Windows, macOS, Linux   |
 
 ---
 
 ## ⚙️ 2. Cú Pháp và Cách Sử Dụng
 
-### 2.1. UI Framework
+### 2.1. Viết Mã Cho Nhiều Nền Tảng
 
-Flutter sử dụng ngôn ngữ lập trình **Dart** để xây dựng giao diện người dùng. UI Framework bao gồm các widget có thể tái sử dụng, cho phép phát triển giao diện đồng nhất trên nhiều nền tảng.
+Flutter sử dụng một mã nguồn duy nhất để nhắm mục tiêu nhiều nền tảng. Các widget và cấu hình có thể được điều chỉnh theo nền tảng.
 
 Ví dụ:
 
@@ -33,60 +34,42 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Flutter App')),
-        body: const Center(child: Text('Hello, Flutter!')),
+        appBar: AppBar(title: const Text('Cross-Platform App')),
+        body: const Center(child: Text('Chạy trên iOS, Android, Web, Desktop')),
       ),
     );
   }
 }
 ```
 
--> Mô tả: Đoạn mã trên tạo một ứng dụng Flutter cơ bản với thanh ứng dụng và văn bản trung tâm.
+-> Mô tả: Ứng dụng trên có thể chạy trên iOS, Android, web, và desktop với cùng mã nguồn.
 
-### 2.2. Bộ Sưu Tập Công Cụ
+### 2.2. Xây Dựng và Chạy Ứng Dụng
 
-Flutter cung cấp công cụ dòng lệnh (`flutter`) để khởi tạo dự án, thêm gói, và xây dựng ứng dụng.
+Sử dụng lệnh `flutter` để xây dựng và chạy ứng dụng trên các nền tảng.
 
 Ví dụ:
 ```sh
-flutter create my_flutter_app
-cd my_flutter_app
-flutter run
+# Xây dựng cho Android
+flutter build apk
+
+# Xây dựng cho web
+flutter build web
+
+# Chạy trên macOS
+flutter run -d macos
 ```
 
--> Mô tả: Tạo một dự án mới và chạy ứng dụng trên thiết bị mô phỏng hoặc thiết bị thực.
+-> Mô tả: Các lệnh trên xây dựng ứng dụng cho các nền tảng khác nhau. Lưu ý rằng iOS/macOS chỉ chạy trên máy macOS, Windows trên máy Windows, và Linux trên máy Linux.
 
----
+--- 
 
-## 💡 3. Use Case Thực Tế
+## 📌 3. Tóm Tắt
 
-- **Phát triển ứng dụng đa nền tảng**: Xây dựng ứng dụng cho cả iOS và Android từ một mã nguồn duy nhất, ví dụ: ứng dụng thương mại điện tử.
+✅ **One Codebase**: Viết mã nguồn duy nhất cho Mobile (iOS, Android), Web (trình duyệt hiện đại), và Desktop (Windows, macOS, Linux).
 
-  ```dart
-  // Widget cho sản phẩm trên cả iOS và Android
-  class ProductWidget extends StatelessWidget {
-    const ProductWidget({super.key});
-    @override
-    Widget build(BuildContext context) {
-      return Card(child: Text('Sản phẩm'));
-    }
-  }
-  ```
+✅ **Yêu Cầu Hệ Thống**: iOS/macOS cần máy macOS, Windows cần máy Windows, Linux cần máy Linux; Android và web có thể xây dựng trên mọi hệ điều hành.
 
-- **Thử nghiệm và triển khai**: Sử dụng `flutter test` để chạy các bài kiểm tra đơn vị và `flutter build` để tạo bản phát hành cho nhiều nền tảng.
-
-- **Ứng dụng web và desktop**: Mở rộng ứng dụng di động sang web hoặc desktop mà không cần viết lại mã.
-
----
-
-## 📌 4. Tóm Tắt
-
-✅ **UI Framework**: Cung cấp gói mã và hàm tiện ích để viết mã ứng dụng đa nền tảng.
-
-✅ **Bộ Công Cụ**: Hỗ trợ CLI, phát triển, thử nghiệm và xây dựng ứng dụng.
-
-✅ **Lợi Ích**: Phát triển ứng dụng đa nền tảng từ một mã nguồn duy nhất bằng Dart.
-
-✅ **Use Case**: Ứng dụng thương mại điện tử, thử nghiệm đa nền tảng, mở rộng web/desktop.
+✅ **Use Case**: Ứng dụng thương mại điện tử, công cụ desktop nội bộ, kiểm thử đa nền tảng.
 
 ---
