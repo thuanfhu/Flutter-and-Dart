@@ -1,0 +1,21 @@
+<p>In the previous lecture, you learned about "<strong>positional</strong>" and "<strong>named</strong>" arguments /&nbsp;parameters.</p><p>In general, function parameters /&nbsp;arguments (the term is used interchangeably here) are a <strong>key concept</strong>.</p><p>You use arguments to pass values into a function. The function may then use these parameter values to work with them - e.g., to display them on the screen, use them in a calculation or send them to another function.</p><p>In Dart (and therefore Flutter, since it uses Dart), you have two kinds of parameters you can accept in functions:</p><ul><li><p><strong>Positional</strong>: The position of an argument determines which parameter receives the value</p><pre class="prettyprint linenums">void add(a, b) { //&nbsp;a &amp;&nbsp;b are positional parameters
+  print(a + b);&nbsp;//&nbsp;print() is a built-in function that will be explained later
+}
+
+add(5, 10); // 5 is used as a value for a, because it's the first argument;&nbsp;10 is used as a value for b</pre></li><li><p><strong>Named</strong>: The name of an argument determines which parameter receives the value</p><pre class="prettyprint linenums">void add({a, b}) { //&nbsp;a &amp;&nbsp;b are named parameters (because of the curly braces)
+  print(a + b);&nbsp;
+}  
+
+add(b: 5, a: 10); // 5 is used as a value for b, because it's assigned to that name;&nbsp;10 is used as a value for a</pre></li></ul><p>Besides the different usage, there's <strong>one very important difference</strong> between positional and named arguments:&nbsp;By default, positional parameters are required and must not be omitted - on the other hand, named arguments are optional and can be omitted.</p><p>In the example above, when using <strong>named parameters</strong>, you <strong>could</strong> call <code>add()</code> like this:</p><pre class="prettyprint linenums">add();</pre><p>or </p><pre class="prettyprint linenums">add(b: 5);</pre><p>When using <strong>positional parameters</strong>, calling <code>add()</code> like this would be <strong>invalid</strong> and hence cause an <strong>error</strong>!</p><p>You can change these behaviors, though. You can make positional arguments <strong>optional</strong> and named arguments <strong>required</strong>.</p><p>Positional arguments can be made optional by wrapping them with square brackets (<code>[]</code>):</p><pre class="prettyprint linenums">void add(a, [b]) { //&nbsp;b is optional
+  print(a + b);
+}</pre><p>Once a parameter is optional, you can also assign a <strong>default value</strong> to it - this value would be used if no value is provided for the argument:</p><pre class="prettyprint linenums">void add(a, [b =&nbsp;5]) { //&nbsp;b is optional, 5 will be used as a default value
+  print(a + b);
+}
+add(10);&nbsp;//&nbsp;b would still be 5 because it's not overwritten
+add(10, 6);&nbsp;//&nbsp;here, b would be 6</pre><p>Default values can also be assigned to named parameters - which are optional by default:</p><pre class="prettyprint linenums">void add({a, b = 5}) { //&nbsp;b has a default value of 5
+  print(a + b);&nbsp;
+}  
+
+add(b: 10); // for b, 10 would be used instead of 5;&nbsp;a has no default value and would be "null" here =&gt;&nbsp;a special value type you'll learn about throughout this course</pre><p>You can also make named parameters required by using the built-in <code>required</code> keyword:</p><pre class="prettyprint linenums">void add({required a, required b}) { //&nbsp;a &amp;&nbsp;b are no longer optional
+  print(a + b);&nbsp;
+}  </pre><p>You will, of course, see these different use-cases in action throughout the course. </p>

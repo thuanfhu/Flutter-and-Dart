@@ -1,0 +1,15 @@
+
+002 main.dart
+https://github.com/academind/flutter-complete-guide-course-resources/blob/main/Code%20Snapshots/02%20Flutter%20%26%20Dart%20Basics%20I/01%20Starting%20Setup/lib/main.dart
+
+005 runApp-Source-Code
+https://github.com/flutter/flutter/blob/f699eb0be0a0cfcf34e2b6c0e402a18d76a96f2e/packages/flutter/lib/src/widgets/binding.dart#L1078
+
+011 MaterialApp-Source-Code
+https://github.com/flutter/flutter/blob/f699eb0be0a0cfcf34e2b6c0e402a18d76a96f2e/packages/flutter/lib/src/material/app.dart#L195
+
+033 Dice-Images-ZIP-File-
+https://github.com/academind/flutter-complete-guide-course-resources/blob/main/Lecture%20Attachments/02%20Flutter%20%26%20Dart%20Basics%20I/dice-images.zip
+
+036 Code-Snapshot
+https://github.com/academind/flutter-complete-guide-course-resources/tree/main/Code%20Snapshots/02%20Flutter%20%26%20Dart%20Basics%20I/12%20Styling%20Buttons
