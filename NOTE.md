@@ -1,123 +1,83 @@
-# 🛠️ Building User Interfaces with Flutter Widgets
+# 🛠️ Positional & Named Arguments
 
-## 📝 1. Tổng Quan Về Xây Dựng Giao Diện Người Dùng với Widget trong Flutter
+## 📝 1. Tổng Quan Về Tham Số Vị Trí và Tham Số Được Đặt Tên
 
-Trong Flutter, giao diện người dùng (UI) được xây dựng hoàn toàn bằng mã, sử dụng sự kết hợp của các **widget**, được tổ chức thành một cấu trúc gọi là **Widget Tree**. Widget là các khối xây dựng cơ bản, bao gồm các widget tích hợp sẵn (built-in) như `Center` và `Text`, có thể lồng nhau (nested) để tạo giao diện phức tạp. Flutter sử dụng ngôn ngữ Dart, với các hàm như `main()` và `runApp()` để khởi chạy ứng dụng, truyền widget tree để hiển thị UI. Quá trình này được hỗ trợ bởi các widget như `MaterialApp`, `Scaffold`, và `Row`, cùng với khả năng tùy chỉnh thông qua các hàm và tham số.
+Trong Dart (ngôn ngữ của Flutter), các hàm có thể sử dụng **tham số vị trí (positional arguments)** hoặc **tham số được đặt tên (named arguments)** để truyền dữ liệu. Tham số vị trí dựa vào thứ tự, trong khi tham số được đặt tên cho phép truyền giá trị theo tên, tăng tính rõ ràng và linh hoạt. Trong Flutter, `MaterialApp` là một ví dụ điển hình sử dụng tham số được đặt tên để cấu hình ứng dụng.
 
-| **Khái Niệm**       | **Mô Tả**                                  |
-|---------------------|--------------------------------------------|
-| Widget              | Khối xây dựng giao diện                    |
-| Widget Tree         | Cấu trúc lồng nhau của widget              |
-| Hàm và Tham số      | Định nghĩa hành vi và đầu vào của hàm      |
+| **Loại Tham Số**    | **Mô Tả**                                  |
+|----------------------|--------------------------------------------|
+| Positional Arguments | Truyền theo thứ tự cố định                 |
+| Named Arguments      | Truyền theo tên, có thể tùy chọn           |
 
 ---
 
 ## ⚙️ 2. Cú Pháp và Cách Sử Dụng
 
-### 2.1. Khởi Chạy Ứng Dụng với `main()` và `runApp()`
+### 2.1. Tham Số Vị Trí
 
-Ứng dụng Flutter được kích hoạt tự động bởi hàm `main()`, gọi `runApp()` để hiển thị widget tree.
+Tham số vị trí yêu cầu giá trị theo thứ tự đã định nghĩa.
 
 Ví dụ:
 ```dart
+void greet(String name, int age) {
+  print('Hello $name, you are $age years old!');
+}
+
 void main() {
-  runApp(const MyApp()); // Gọi runApp() bên trong main()
+  greet('Alice', 25); // Truyền theo thứ tự: name, age
 }
 ```
 
--> Mô tả: `main()` được thực thi tự động, `runApp()` truyền widget tree để hiển thị UI.
+-> Mô tả: `Alice` và `25` được truyền theo vị trí cố định.
 
-### 2.2. Xây Dựng Widget Tree với Lồng Nhau
+### 2.2. Tham Số Được Đặt Tên
 
-Widget được lồng vào nhau để tạo giao diện, ví dụ `Center` chứa `Text`.
+Tham số có thể được đặt theo tên thay vì thứ tự.
 
 Ví dụ:
+
+```dart
+void greet(String name, int age) {
+  print('Hello $name, you are $age years old!');
+}
+
+void main() {
+  greet(age: 30, name: 'Bob', ); // Truyền theo tên
+}
+```
+
+-> Mô tả: `name` và `age` được truyền theo tên, với giá trị mặc định nếu không cung cấp.
+
+### 2.3. Liên Hệ với `MaterialApp`
+
+`MaterialApp` trong Flutter sử dụng tham số được đặt tên để tùy chỉnh ứng dụng.
+
+Ví dụ:
+
 ```dart
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const Center(
-      child: Text('Hello World'), // Widget lồng nhau
+    MaterialApp(
+      title: 'My App', // Tham số được đặt tên
+      theme: ThemeData(primarySwatch: Colors.blue), // Tham số được đặt tên
+      home: const Scaffold(body: Center(child: Text('Hello!'))), // Tham số được đặt tên
     ),
   );
 }
 ```
 
--> Mô tả: `Center` căn giữa nội dung (ngang và dọc), `Text` hiển thị văn bản trên màn hình.
-
-### 2.3. Sử Dụng Hàm và Tham Số
-
-Hàm trong Dart có thể nhận không, một, hoặc nhiều tham số (parameters/arguments).
-
-Ví dụ:
-```dart
-void main() {} // Không tham số
-void printText(String text) {} // Một tham số
-void add(int a, int b) {} // Hai tham số, cách nhau bằng dấu phẩy
-```
-
--> Mô tả: Tham số được định nghĩa trong hàm, hỗ trợ nhiều giá trị tùy theo nhu cầu.
-
-### 2.4. Cấu Trúc Widget Tree Nâng Cao
-
-Sử dụng các widget như `MaterialApp`, `Scaffold`, và `Row` để tạo giao diện phức tạp.
-
-Ví dụ:
-```dart
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MaterialApp(
-    home: Scaffold(
-      body: Row(
-        children: const [
-          Text('Text 1'),
-          Text('Text 2'),
-          Text('Text 3'),
-        ],
-      ),
-    ),
-  ));
-}
-```
-
--> Mô tả: `MaterialApp` là root widget, `Scaffold` thêm bố cục màn hình, `Row` hiển thị các widget con liền kề.
-
-### 2.5. Tùy Chỉnh và Tạo Widget Riêng
-
-Flutter cung cấp nhiều widget tích hợp và cho phép tạo widget tùy chỉnh.
-
-Ví dụ:
-```dart
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MaterialApp(
-    home: Scaffold(
-      body: OutlinedButton(
-        onPressed: () {},
-        child: Text('Start Quiz'),
-      ),
-    ),
-  ));
-}
-```
-
--> Mô tả: `OutlinedButton` và `Text` là widget tích hợp, có thể kết hợp để tạo giao diện độc đáo.
+-> Mô tả: `title`, `theme`, và `home` là tham số được đặt tên, cho phép cấu hình linh hoạt mà không cần theo thứ tự cố định.
 
 ---
 
-## 📌 4. Tóm Tắt
+## 📌 3. Tóm Tắt
 
-✅ **Xây Dựng UI**: Dùng mã để tạo giao diện với sự kết hợp của widget trong Flutter.
+✅ **Positional Arguments**: Truyền giá trị theo thứ tự cố định.
 
-✅ **Widget Tree**: Cấu trúc lồng nhau (nested) của widget, bắt đầu từ `runApp()`.
+✅ **Named Arguments**: Truyền giá trị theo tên, không quan trọng thứ tự cố định.
 
-✅ **Hàm và Tham Số**: Hàm như `main()` và `runApp()` nhận tham số để định nghĩa hành vi.
-
-✅ **Cấu Trúc Nâng Cao**: Sử dụng `MaterialApp`, `Scaffold`, `Row` để tổ chức giao diện.
-
-✅ **Tùy Chỉnh Widget**: Dùng widget tích hợp (như `Center`, `Text`, `OutlinedButton`) và tạo widget riêng.
+✅ **Liên Hệ với MaterialApp**: Sử dụng tham số được đặt tên như `title`, `theme`, `home` để tùy chỉnh ứng dụng.
 
 ---
