@@ -1,83 +1,50 @@
-# 🛠️ Positional & Named Arguments
+# 🛠️ Understanding "const" Values
 
-## 📝 1. Tổng Quan Về Tham Số Vị Trí và Tham Số Được Đặt Tên
+## 📝 1. Tổng Quan Về Giá Trị "const"
 
-Trong Dart (ngôn ngữ của Flutter), các hàm có thể sử dụng **tham số vị trí (positional arguments)** hoặc **tham số được đặt tên (named arguments)** để truyền dữ liệu. Tham số vị trí dựa vào thứ tự, trong khi tham số được đặt tên cho phép truyền giá trị theo tên, tăng tính rõ ràng và linh hoạt. Trong Flutter, `MaterialApp` là một ví dụ điển hình sử dụng tham số được đặt tên để cấu hình ứng dụng.
+Trong Dart (ngôn ngữ của Flutter), từ khóa `const` được sử dụng để khai báo các giá trị không đổi (constant values) tại thời điểm biên dịch, giúp tối ưu hóa hiệu suất runtime. Khi một widget như `Text` được khai báo với `const`, Dart chỉ lưu một bản sao duy nhất trong bộ nhớ thiết bị (Device Memory), ngay cả khi được sử dụng nhiều lần trong ứng dụng. Điều này giảm tiêu tốn tài nguyên bằng cách tái sử dụng cùng một đối tượng bộ nhớ (ví dụ: địa chỉ bộ nhớ `<0x021d36e0>` cho `Text widget A`) thay vì tạo mới mỗi lần.
 
-| **Loại Tham Số**    | **Mô Tả**                                  |
-|----------------------|--------------------------------------------|
-| Positional Arguments | Truyền theo thứ tự cố định                 |
-| Named Arguments      | Truyền theo tên, có thể tùy chọn           |
+| **Khái Niệm**       | **Mô Tả**                                  |
+|---------------------|--------------------------------------------|
+| `const`             | Khai báo giá trị không đổi                 |
+| Tối ưu hóa bộ nhớ   | Tái sử dụng đối tượng trong bộ nhớ         |
 
 ---
 
 ## ⚙️ 2. Cú Pháp và Cách Sử Dụng
 
-### 2.1. Tham Số Vị Trí
+### 2.1. Khai Báo `const` trong Widget
 
-Tham số vị trí yêu cầu giá trị theo thứ tự đã định nghĩa.
+Sử dụng `const` để khai báo widget không đổi, như `Text`.
 
 Ví dụ:
 ```dart
-void greet(String name, int age) {
-  print('Hello $name, you are $age years old!');
-}
-
-void main() {
-  greet('Alice', 25); // Truyền theo thứ tự: name, age
-}
+const Text('Hello World!') // Được định nghĩa và sử dụng lần đầu
 ```
 
--> Mô tả: `Alice` và `25` được truyền theo vị trí cố định.
+-> Mô tả: Widget `Text` được đánh dấu `const`, tạo một đối tượng cố định trong bộ nhớ.
 
-### 2.2. Tham Số Được Đặt Tên
+### 2.2. Tác Động Đến Bộ Nhớ Thiết Bị
 
-Tham số có thể được đặt theo tên thay vì thứ tự.
+Giá trị `const` được lưu trong Device Memory và tái sử dụng.
 
 Ví dụ:
-
 ```dart
-void greet(String name, int age) {
-  print('Hello $name, you are $age years old!');
-}
-
 void main() {
-  greet(age: 30, name: 'Bob', ); // Truyền theo tên
+  const widgetA = Text('Hello World!');
+  const widgetB = Text('Hello World!');
+  print(identical(widgetA, widgetB)); // Trả về true, cùng đối tượng
 }
 ```
 
--> Mô tả: `name` và `age` được truyền theo tên, với giá trị mặc định nếu không cung cấp.
-
-### 2.3. Liên Hệ với `MaterialApp`
-
-`MaterialApp` trong Flutter sử dụng tham số được đặt tên để tùy chỉnh ứng dụng.
-
-Ví dụ:
-
-```dart
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(
-    MaterialApp(
-      title: 'My App', // Tham số được đặt tên
-      theme: ThemeData(primarySwatch: Colors.blue), // Tham số được đặt tên
-      home: const Scaffold(body: Center(child: Text('Hello!'))), // Tham số được đặt tên
-    ),
-  );
-}
-```
-
--> Mô tả: `title`, `theme`, và `home` là tham số được đặt tên, cho phép cấu hình linh hoạt mà không cần theo thứ tự cố định.
+-> Mô tả: `identical()` xác nhận `widgetA` và `widgetB` là cùng một đối tượng trong bộ nhớ.
 
 ---
 
 ## 📌 3. Tóm Tắt
 
-✅ **Positional Arguments**: Truyền giá trị theo thứ tự cố định.
+✅ **Khái Niệm `const`**: Khai báo giá trị không đổi tại thời điểm biên dịch.
 
-✅ **Named Arguments**: Truyền giá trị theo tên, không quan trọng thứ tự cố định.
-
-✅ **Liên Hệ với MaterialApp**: Sử dụng tham số được đặt tên như `title`, `theme`, `home` để tùy chỉnh ứng dụng.
+✅ **Tối ưu Hiệu Suất**: Giúp Dart tái sử dụng đối tượng trong bộ nhớ, giảm tiêu tốn tài nguyên.
 
 ---
