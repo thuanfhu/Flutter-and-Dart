@@ -108,7 +108,7 @@ void main() {
 
 ---
 
-## 📌 4. Tóm Tắt
+## 📌 3. Tóm Tắt
 
 ✅ **Xây Dựng UI**: Dùng mã để tạo giao diện với sự kết hợp của widget trong Flutter.
 
