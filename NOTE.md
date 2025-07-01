@@ -1,62 +1,50 @@
-# 🛠️ From Dart To Machine Code
+# 🛠️ How Programming Languages Work?
 
-## 📝 1. Tổng Quan Về Quá Trình Biên Dịch Từ Dart Sang Mã Máy
+## 📝 1. Tổng Quan Về Cách Hoạt Động Của Ngôn Ngữ Lập Trình
 
-Mã Dart và Flutter được biên dịch thành mã máy để chạy trên các thiết bị di động (iOS hoặc Android) thông qua quy trình do Dart và Flutter tools quản lý. Quá trình này bao gồm việc phân tích cú pháp mã Dart từ trên xuống dưới, sau đó biên dịch thành mã native hoặc mã máy (machine code) để thực thi trực tiếp trên thiết bị. Điều này đảm bảo hiệu suất cao và tích hợp mượt mà với nền tảng.
+Ngôn ngữ lập trình, như Dart được sử dụng trong Flutter, hoạt động dựa trên hai loại từ cơ bản: **Keywords** và **Identifiers**. Keywords là các từ được tích hợp sẵn trong ngôn ngữ, mang ý nghĩa rõ ràng và cụ thể, trong khi Identifiers là các tên do lập trình viên định nghĩa để xác định các "đối tượng" trong mã (như biến, hàm, hoặc lớp).
 
-| **Giai Đoạn**      | **Mô Tả**                                  |
-|--------------------|--------------------------------------------|
-| Phân tích cú pháp  | Xử lý mã Dart từ trên xuống dưới           |
-| Biên dịch          | Chuyển thành mã native/mã máy              |
-| Thực thi           | Chạy trên thiết bị di động                 |
+| **Loại**          | **Mô Tả**                                  |
+|-------------------|--------------------------------------------|
+| Keywords          | Từ tích hợp sẵn, có ý nghĩa cố định        |
+| Identifiers       | Tên do lập trình viên định nghĩa           |
 
 ---
 
 ## ⚙️ 2. Cú Pháp và Cách Sử Dụng
 
-### 2.1. Phân Tích Cú Pháp Từ Trên Xuống Dưới
+### 2.1. Keywords
 
-Mã Dart được đọc và phân tích bởi Dart analyzer trước khi biên dịch.
+Keywords là các từ khóa cố định trong Dart, không thể sử dụng làm tên biến hoặc hàm.
 
 Ví dụ:
 ```dart
 void main() {
-  runApp(const MyApp());
+  var x = 10; // "void" là keyword
+  print(x);   // "print" là keyword
 }
 ```
 
--> Mô tả: Mã trên được phân tích từ `void main()` xuống `runApp()`, đảm bảo cú pháp đúng trước khi biên dịch.
+-> Mô tả: `void`, `var`, và `print` là keywords có ý nghĩa cụ thể trong Dart.
 
-### 2.2. Biên Dịch Thành Mã Native/Máy
+### 2.2. Identifiers
 
-Flutter tools sử dụng AOT (Ahead-Of-Time) compilation để tạo mã máy.
-
-Ví dụ:
-```sh
-flutter build apk
-```
-
--> Mô tả: Lệnh này biên dịch mã Dart thành mã máy cho Android, cho phép ứng dụng chạy trực tiếp trên thiết bị.
-
-### 2.3. Thực Thi Trên Thiết Bị
-
-Mã máy được thực thi trên máy ảo hoặc phần cứng thiết bị.
+Identifiers được tạo bởi lập trình viên để đặt tên cho biến, hàm, hoặc lớp.
 
 Ví dụ:
-```sh
-flutter run
+```dart
+int myVariable = 5; // "myVariable" là identifier
+void myFunction() {} // "myFunction" là identifier
 ```
 
--> Mô tả: Sau biên dịch, ứng dụng chạy trên emulator hoặc thiết bị thực, tận dụng mã native cho hiệu suất cao.
+-> Mô tả: `myVariable` và `myFunction` là identifiers do lập trình viên định nghĩa.
 
 ---
 
 ## 📌 3. Tóm Tắt
 
-✅ **Phân Tích Cú Pháp**: Xử lý mã Dart từ trên xuống dưới.
+✅ **Keywords**: Từ tích hợp sẵn trong ngôn ngữ, có ý nghĩa rõ ràng và cố định.
 
-✅ **Biên Dịch**: Chuyển thành mã native/máy bằng Flutter tools với AOT compilation.
-
-✅ **Thực Thi**: Chạy trực tiếp trên thiết bị di động (iOS/Android).
+✅ **Identifiers**: Tên do lập trình viên tạo, dùng để xác định các đối tượng trong mã.
 
 ---
